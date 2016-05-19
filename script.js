@@ -45,18 +45,21 @@ function setGuesses(){
 
 
 function playerGuess(){
-$(document).on("keyup", function(event){
-	var characterCode = event.which; // determine the character code the user pressed
-	var letterInput = String.fromCharCode(characterCode).toLowerCase(); // converting character code to string
- 	for (var i = 0; i < wordChars.length; i++) {
-		if (letterInput === wordChars[i]){ // is the usr input included in the word?
-			$("#pos" + i).addClass("show");//if correct letter is typed, it shows up in corresct place(s)
-		} else {
-			console.log("no")
+	$(document).on("keyup", function(event){
+		var characterCode = event.which; // determine the character code the user pressed
+		var letterInput = String.fromCharCode(characterCode).toLowerCase(); // converting character code to string
+	 	if (guesses.indexOf(letterInput) === -1) { // if letterInput has already been guessed
+	 		for (var i = 0; i < wordChars.length; i++) {
+				if (letterInput === wordChars[i]){ // is the usr input included in the word?
+					$("#pos" + i).addClass("show");//if correct letter is typed, it shows up in corresct place(s)
+				}
 			};
-		};
-	setGuesses();
-	guesses.push(letterInput + " "); // pushes guessed letters to div; need to figure out how to put them there only once + on keypress, not after.
+			if (wordChars.indexOf(letterInput) === -1) { // if letter input is not inside wordChars
+				livesCounter--;	// decrement lives
+			}
+			setGuesses();
+			guesses.push(letterInput); // pushes guessed letters to div; need to figure out how to put them there only once + on keypress, not after.
+	 	}
 	});
 };
 
