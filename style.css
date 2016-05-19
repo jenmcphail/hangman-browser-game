@@ -21,6 +21,53 @@ td{
 	visibility: hidden;
 }*/
 
-#hangman div {
+
+.addHead{
+	background-image: 
+	background-color: red;
+}
+
+.addBody{
+	background-image: 
+	background-color: red;
+}
+
+.addRArm{
+	background-image: 
+	background-color: red;
+}
+
+.addLArm{
+	background-image: 
+	background-color: red;
+}
+
+.addRLeg{
+	background-image: 
+	background-color: red;
+}
+
+.addLLeg{
+	background-image: 
+	background-color: red;
+}
+
+.addRAHand{
+	background-image: 
+	background-color: red;
+}
+
+.addLHand{
+	background-image: 
+	background-color: red;
+}
+
+.addRFoot{
+	background-image: 
+	background-color: red;
+}
+
+.addLFoot{
+	background-image: 
 	background-color: red;
 }

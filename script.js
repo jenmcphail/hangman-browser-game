@@ -23,7 +23,7 @@ var words = ["tutorial", "glucose", "lament", "line", "frousier",
 
 var randomIndex = words[Math.floor(Math.random()*words.length-1)]; //selects a random word from the array
 var wordChars = randomIndex.split(""); //makes each selected word into an array of characters
-var Guesses = []; //will push user input to this array
+var guesses = []; //will push user input to this array
 var livesCounter = 10
 
 window.onload = initGame();
@@ -40,7 +40,7 @@ function setMessage(msg){
 }
 
 function setGuesses(){
-	document.querySelector(".guessDiv").textContent = Guesses;
+	document.querySelector(".guessDiv").textContent = guesses;
 }
 
 
@@ -53,18 +53,23 @@ $(document).on("keyup", function(event){
 			$("#pos" + i).addClass("show");//if correct letter is typed, it shows up in corresct place(s)
 		} else {
 			console.log("no")
-			// var hangmanLimbs = document.querySelector("#hangman")
-			// hangmanLimbs.createElement("div")
-			// hangmanLimbs.appendChild;
 			};
 		};
 	setGuesses();
-	Guesses.push(letterInput);
+	guesses.push(letterInput + " "); // pushes guessed letters to div; need to figure out how to put them there only once + on keypress, not after.
 	});
 };
 
 
-
+// function lives(){
+// for each keypress != wordChars{
+//		var hangmanDiv = document.querySelector("#hangman")
+//			hangmanDiv.createElement("div")
+//				.addClass (10 classes)
+//}
+// 	
+// 	decrement counter
+// }
 
 
 function createBoard(){
@@ -89,8 +94,8 @@ function addCell(letter, i){
 });
 
 
-// 1. Start w/ word invisible but WITH underlines
-// 2. IF letter guessed right, make it appear (currently appears blue)
+// 1. X Start w/ word invisible but WITH underlines
+// 2. X IF letter guessed right, make it appear (currently appears blue)
 // 3. ELSE IF letter guessed wrong, make a hangman div appear and increment counter
 // 4. make guessed letters appear only once in the "you have guessed section"
 // 5. end game, set message
