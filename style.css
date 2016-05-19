@@ -1,4 +1,26 @@
 .wordDiv{
-	height: 100px;
-	width: 100px;
+	padding: 20px;
+}
+
+td{
+	border-bottom: 1px solid black;
+	width: 10px;
+	color: rgba(0,0,0,0);
+}
+
+
+.show{
+	color: blue;
+}
+
+.guessDiv{
+	height: 50px;
+}
+
+/*#pos0, #pos1{
+	visibility: hidden;
+}*/
+
+#hangman div {
+	background-color: red;
 }

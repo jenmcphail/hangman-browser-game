@@ -23,58 +23,73 @@ var words = ["tutorial", "glucose", "lament", "line", "frousier",
 
 var randomIndex = words[Math.floor(Math.random()*words.length-1)]; //selects a random word from the array
 var wordChars = randomIndex.split(""); //makes each selected word into an array of characters
-var playerGuess = []; //will push user input to this array
+var Guesses = []; //will push user input to this array
+var livesCounter = 10
 
-function selectWord(msg){
-	document.querySelector(".wordDiv").textContent = msg;
+window.onload = initGame();
+
+function initGame(){
+	createBoard();
+	playerGuess();
+	setMessage("You have " + livesCounter + " lives left.")
 }
 
-selectWord(wordChars)
+function setMessage(msg){
+	document.querySelector(".messageDiv").textContent = msg
+}
 
 
 function playerGuess(){
 $(document).on("keyup", function(event){
 	var characterCode = event.which; // determine the character code the user pressed
-	var letterInput = String.fromCharCode(characterCode).toLowerCase() // converting character code to string
-	console.log("user entered:", letterInput);
+	var letterInput = String.fromCharCode(characterCode).toLowerCase(); // converting character code to string
  	for (var i = 0; i < wordChars.length; i++) {
 		if (letterInput === wordChars[i]){ // is the usr input included in the word?
-			console.log("right")
+			console.log("yes");
+			$("#pos" + i).addClass("show");//figure out how to make letter show up in correct spot;
+
 		} else {
-			console.log("wrong")
+			console.log("no")
+			// var hangmanLimbs = document.querySelector("#hangman")
+			// hangmanLimbs.createElement("div")
+			// hangmanLimbs.appendChild;
+			livesCounter --
+		};
+		if (livesCounter = 0){
+			setMessage("Game Over :(");
 		}
+	//Guesses.push("letterInput");
 	};
  })
 };
 
 function createBoard(){
+	
 	for (i = 0; i < wordChars.length; i++){
-		$(document).$OuterDiv = $("<div></div>").addClass("board").append($("#wordDiv"))
+		addCell(wordChars[i], i); // iterates through word and calls addCell function
 	};
 };
 
-
-// alternate option fo accessing each letter
-// for (var i = 0; i < randomIndex.length; i++) {
-//     console.log(randomIndex.charAt(i));
-// }
+function addCell(letter, i){
+ var row = document.querySelectorAll("tr"); // selects row within table
+ var newCell = document.createElement("td"); // creates a td cell within table that's the length of the word
+ newCell.setAttribute("id", 'pos'+i);
+ newCell.innerHTML = letter;
+ row[0].appendChild(newCell);
+}
 
 
 
  $("#myButton").on("click", function(){
-	location.reload();
+	location.reload(); //resets game
 });
 
 
-
- // X get input from keyboard
-//give it a value
-//grey out corresponding letter
-//make word appear, but hidden w/ lines or boxes
-//make typed value connect w/ array of characters
-//make typed value appear on page OR give hangman parts OR alert "not a letter"
-//
-//
+// 1. Start w/ word invisible but WITH underlines
+// 2. IF letter guessed right, make it appear (currently appears blue)
+// 3. ELSE IF letter guessed wrong, make a hangman div appear and increment counter
+// 4. make guessed letters appear only once in the "you have guessed section"
+// 5. end game, set message
 
 
   
