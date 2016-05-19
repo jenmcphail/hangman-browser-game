@@ -33,9 +33,14 @@ function initGame(){
 	playerGuess();
 	setMessage("You have " + livesCounter + " lives left.")
 }
+ console.log(wordChars);
 
 function setMessage(msg){
-	document.querySelector(".messageDiv").textContent = msg
+	document.querySelector(".messageDiv").textContent = msg;
+}
+
+function setGuesses(){
+	document.querySelector(".guessDiv").textContent = Guesses;
 }
 
 
@@ -45,23 +50,22 @@ $(document).on("keyup", function(event){
 	var letterInput = String.fromCharCode(characterCode).toLowerCase(); // converting character code to string
  	for (var i = 0; i < wordChars.length; i++) {
 		if (letterInput === wordChars[i]){ // is the usr input included in the word?
-			console.log("yes");
-			$("#pos" + i).addClass("show");//figure out how to make letter show up in correct spot;
-
+			$("#pos" + i).addClass("show");//if correct letter is typed, it shows up in corresct place(s)
 		} else {
 			console.log("no")
 			// var hangmanLimbs = document.querySelector("#hangman")
 			// hangmanLimbs.createElement("div")
 			// hangmanLimbs.appendChild;
-			livesCounter --
+			};
 		};
-		if (livesCounter = 0){
-			setMessage("Game Over :(");
-		}
-	//Guesses.push("letterInput");
-	};
- })
+	setGuesses();
+	Guesses.push(letterInput);
+	});
 };
+
+
+
+
 
 function createBoard(){
 	
