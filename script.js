@@ -2,7 +2,7 @@
 var words = ["tutorial", "glucose", "lament", "line", "frousier", 
 "syncopation", "doubtful", "specious", "rumbler", "indefinitely", 
 "tourist", "vacant", "veneer", "disappoint", "glossary", 
-"friction", "illusion", "giberish", "melancholy", "yawn", 
+"friction", "illusion", "gibberish", "melancholy", "yawn", 
 "carnage", "spherical", "bustier", "granular", "extinguish", 
 "gallery", "herbivore", "buoy", "comical", "soldarity", 
 "terrain", "sequin", "maritime", "primate", "erudite", 
@@ -104,7 +104,6 @@ function hangman(){ // adds hangman divs upon livesCounter countdown
 		document.getElementById("face").className ="addSFace"
 		//lossCounter ++
 		setMessage("Game over :(")
-		//document.removeEventListener("keyup");
 	};
 };
 
@@ -115,25 +114,12 @@ function winGame(){
 		livesCounter = 0;
 		setMessage("You won!");
 	}
-		// for (i = 0; i<= checkWin.length; i++){
-		// 	if (checkWin === wordChars){
-		// 		setMessage("You won!")
-		// 		won = true;
-		// 		//remove event listener
-		// 	}
-		// }
 };
 
 
  $("#myButton").on("click", function(){
 	location.reload(); //resets game
 });
-
-
-// 2. Add functionality to win game and set message
-// Remove event listeners upon game win / lose
-// Make guessed letters appear immeadiately
-// readme file
 
 
   
