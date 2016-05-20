@@ -25,6 +25,8 @@ var randomIndex = words[Math.floor(Math.random()*words.length-1)]; //selects a r
 var wordChars = randomIndex.split(""); //makes each selected word into an array of characters
 var guesses = []; //will push user input to this array
 var livesCounter = 10
+var winCounter = 0
+var lossCounter = 0
 
 window.onload = initGame();
 
@@ -40,7 +42,7 @@ function setMessage(msg){
 }
 
 function setGuesses(){
-	document.querySelector(".guessDiv").textContent = guesses;
+	document.querySelector(".guessDiv2").textContent = guesses;
 }
 
 
@@ -51,11 +53,13 @@ function playerGuess(){
 	 	if (guesses.indexOf(letterInput) === -1) { // if letterInput has already been guessed
 	 		for (var i = 0; i < wordChars.length; i++) {
 				if (letterInput === wordChars[i]){ // is the usr input included in the word?
-					$("#pos" + i).addClass("show");//if correct letter is typed, it shows up in corresct place(s)
+					$("#pos" + i).addClass("correct");//if correct letter is typed, it shows up in corresct place(s)
 				}
 			};
 			if (wordChars.indexOf(letterInput) === -1) { // if letter input is not inside wordChars
 				livesCounter--;	// decrement lives
+				setMessage("You have " + livesCounter + " lives left.")
+				hangman();
 			}
 			setGuesses();
 			guesses.push(letterInput); // pushes guessed letters to div; need to figure out how to put them there only once + on keypress, not after.
@@ -64,14 +68,36 @@ function playerGuess(){
 };
 
 
-// function lives(){
-// for each keypress != wordChars{
-//		var hangmanDiv = document.querySelector("#hangman")
-//			hangmanDiv.createElement("div")
-//				.addClass (10 classes)
-//}
-// 	
-// 	decrement counter
+function hangman(){ // adds hangman divs upon livesCounter countdown
+	if (livesCounter == 9){
+		document.getElementById("head").className ="addHead"
+	} else if (livesCounter == 8){
+		document.getElementById("body").className ="addBody"
+	} else if (livesCounter == 7){
+		document.getElementById("rArm").className ="addRArm"
+	} else if (livesCounter == 6){
+		document.getElementById("lArm").className ="addLArm"
+	} else if (livesCounter == 5){
+		document.getElementById("rLeg").className ="addRLeg"
+	} else if (livesCounter == 4){
+		document.getElementById("lLeg").className ="addLLeg"
+	} else if (livesCounter == 3){
+		document.getElementById("rHand").className ="addRHand"
+	} else if (livesCounter == 2){
+		document.getElementById("lHand").className ="addLHand"
+	} else if (livesCounter == 1){
+		document.getElementById("rFoot").className ="addRFoot"
+	} else if (livesCounter == 0){
+		document.getElementById("lFoot").className ="addLFoot"
+		document.getElementById("sadface").className ="addSFace"
+		lossCounter ++
+		setMessage("Game over :(")
+		//document.removeEventListener("keyup");
+	};
+};
+
+// function winGame(){
+// 	//if class show === split letters in the guessed array, display win message, winCounter ++
 // }
 
 
@@ -86,6 +112,7 @@ function addCell(letter, i){
  var row = document.querySelectorAll("tr"); // selects row within table
  var newCell = document.createElement("td"); // creates a td cell within table that's the length of the word
  newCell.setAttribute("id", 'pos'+i);
+ newCell.setAttribute("class", "box")
  newCell.innerHTML = letter;
  row[0].appendChild(newCell);
 }
@@ -97,11 +124,16 @@ function addCell(letter, i){
 });
 
 
-// 1. X Start w/ word invisible but WITH underlines
-// 2. X IF letter guessed right, make it appear (currently appears blue)
-// 3. ELSE IF letter guessed wrong, make a hangman div appear and increment counter
-// 4. make guessed letters appear only once in the "you have guessed section"
-// 5. end game, set message
+// 1. Position hangman divs correctly
+// 2. Add functionality to win game and set message
+// 3. Make lives count on page correctly
+// 3. Style page correctly:
+		// - colors
+		// - images
+		// - placement of divs / messages
+// Remove event listeners upon game win / lose
+// Make guessed letters appear immeadiately
+// Optional: add scoreboard w/ local storage
 
 
   

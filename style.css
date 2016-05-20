@@ -3,56 +3,100 @@
 }
 
 td{
-	border-bottom: 1px solid black;
-	width: 10px;
+	border: 1px solid black;
+	width: 20px;
+	padding: 20px;
 	color: rgba(0,0,0,0);
+	margin: 0 auto;
+	text-align: center;
+	padding: 5px;
+	column-width: 110px;
+ 	-webkit-column-width: 110px;
+ 	-moz-column-width: 110px;
 }
 
 
-.show{
+.correct{
 	color: blue;
 }
 
-.guessDiv{
-	height: 50px;
+.hangmanShow{
+	border: 2px solid red;
 }
 
-/*#pos0, #pos1{
-	visibility: hidden;
-}*/
+body{
+	font-size: 20px;
+}
+
+.guessDiv2{
+	height: 100px;
+}
+
+#hangman{
+	background-image: url("hangmanimg.gif");
+	background-size: 400px;
+	background-repeat: no-repeat;
+	height: 400px;
+	padding: 25px;
+}
 
 
 .addHead{
-	background-image: 
-	background-color: red;
+	background-image: url("circle.png");
+	background-size: 75px;
+	background-repeat: no-repeat;
+	height: 75px;
+	margin-left: 210px;
+	margin-top: 45px;
 }
 
 .addBody{
-	background-image: 
-	background-color: red;
+	background-image: url("body.png");
+	background-size: 10px;
+	background-repeat: no-repeat;
+	height: 150px;
+	margin-left: 242px;
 }
 
 .addRArm{
-	background-image: 
-	background-color: red;
+	background-image: url("right-arm.png");
+	background-size: 50px;
+	background-repeat: no-repeat;
+	height: 150px;
+	margin-left: 0px;
+	transform: 
 }
 
 .addLArm{
-	background-image: 
-	background-color: red;
+	background-image: url("left-arm.png");
+	background-size: 50px;
+	background-repeat: no-repeat;
+	height: 150px;
+	margin-left: -10px;
+	margin-top: -102px;
+	-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
 }
 
 .addRLeg{
-	background-image: 
-	background-color: red;
+	background-image: url("right-leg.png");
+	background-size: 50px;
+	background-repeat: no-repeat;
+	height: 150px;
+	margin-left: 242px;
 }
 
 .addLLeg{
-	background-image: 
-	background-color: red;
+	background-image: url("left-leg.png");
+	background-size: 10px;
+	background-repeat: no-repeat;
+	height: 150px;
+	margin-left: 242px;
 }
 
-.addRAHand{
+.addRHand{
 	background-image: 
 	background-color: red;
 }
@@ -70,4 +114,17 @@ td{
 .addLFoot{
 	background-image: 
 	background-color: red;
+}
+
+.addSFace{
+	background-image: 
+}
+
+.addHFace{
+
+}
+
+.box{
+	width: 75px;
+	height: 75px;
 }
