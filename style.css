@@ -3,7 +3,7 @@
 }
 
 td{
-	border: 1px solid black;
+	border: 2px solid white;
 	width: 20px;
 	padding: 20px;
 	color: rgba(0,0,0,0);
@@ -13,23 +13,31 @@ td{
 	column-width: 110px;
  	-webkit-column-width: 110px;
  	-moz-column-width: 110px;
+ 	border-radius: 25px
 }
 
 
 .correct{
-	color: blue;
+	color: lightgray;
+	background-color: 
 }
 
-.hangmanShow{
-	border: 2px solid red;
+.messageDiv{
+	margin-top: -10px;
+	color: white;
 }
 
 body{
 	font-size: 20px;
+	background-color: #893cb4;
 }
 
+.guessDiv1{
+	color: white;
+}
 .guessDiv2{
 	height: 100px;
+	color: white;
 }
 
 #hangman{
@@ -47,7 +55,7 @@ body{
 	background-repeat: no-repeat;
 	height: 75px;
 	margin-left: 210px;
-	margin-top: 45px;
+	margin-top: -15px;
 }
 
 .addBody{
@@ -72,12 +80,8 @@ body{
 	background-size: 50px;
 	background-repeat: no-repeat;
 	height: 150px;
-	margin-left: -10px;
-	margin-top: -102px;
-	-ms-transform: rotate(180deg); /* IE 9 */
-    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-    transform: rotate(180deg);
-}
+	margin-left: -40px;
+	margin-top: -150px;
 }
 
 .addRLeg{
@@ -85,46 +89,40 @@ body{
 	background-size: 50px;
 	background-repeat: no-repeat;
 	height: 150px;
-	margin-left: 242px;
+	margin-left: -48px;
+    margin-top: -5px;
 }
 
 .addLLeg{
 	background-image: url("left-leg.png");
-	background-size: 10px;
+	background-size: 50px;
 	background-repeat: no-repeat;
 	height: 150px;
-	margin-left: 242px;
-}
-
-.addRHand{
-	background-image: 
-	background-color: red;
-}
-
-.addLHand{
-	background-image: 
-	background-color: red;
-}
-
-.addRFoot{
-	background-image: 
-	background-color: red;
-}
-
-.addLFoot{
-	background-image: 
-	background-color: red;
+	margin-left: 8px;
+	margin-top: -150px;
 }
 
 .addSFace{
-	background-image: 
+	background-image: url("frowny-face.png");
+	background-size: 50px;
+	height: 75px;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+	
 }
 
-.addHFace{
-
-}
 
 .box{
 	width: 75px;
 	height: 75px;
 }
+
+header{
+	color: white;
+	text-shadow: 2px 2px black
+}
+
+button {
+	margin-top: 10px;
+}
+

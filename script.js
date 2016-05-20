@@ -24,9 +24,10 @@ var words = ["tutorial", "glucose", "lament", "line", "frousier",
 var randomIndex = words[Math.floor(Math.random()*words.length-1)]; //selects a random word from the array
 var wordChars = randomIndex.split(""); //makes each selected word into an array of characters
 var guesses = []; //will push user input to this array
-var livesCounter = 10
-var winCounter = 0
-var lossCounter = 0
+var livesCounter = 7
+var won = false;
+//var winCounter = 0
+//var lossCounter = 0
 
 window.onload = initGame();
 
@@ -34,8 +35,8 @@ function initGame(){
 	createBoard();
 	playerGuess();
 	setMessage("You have " + livesCounter + " lives left.")
+	console.log(wordChars);
 }
- console.log(wordChars);
 
 function setMessage(msg){
 	document.querySelector(".messageDiv").textContent = msg;
@@ -44,62 +45,6 @@ function setMessage(msg){
 function setGuesses(){
 	document.querySelector(".guessDiv2").textContent = guesses;
 }
-
-
-function playerGuess(){
-	$(document).on("keyup", function(event){
-		var characterCode = event.which; // determine the character code the user pressed
-		var letterInput = String.fromCharCode(characterCode).toLowerCase(); // converting character code to string
-	 	if (guesses.indexOf(letterInput) === -1) { // if letterInput has already been guessed
-	 		for (var i = 0; i < wordChars.length; i++) {
-				if (letterInput === wordChars[i]){ // is the usr input included in the word?
-					$("#pos" + i).addClass("correct");//if correct letter is typed, it shows up in corresct place(s)
-				}
-			};
-			if (wordChars.indexOf(letterInput) === -1) { // if letter input is not inside wordChars
-				livesCounter--;	// decrement lives
-				setMessage("You have " + livesCounter + " lives left.")
-				hangman();
-			}
-			setGuesses();
-			guesses.push(letterInput); // pushes guessed letters to div; need to figure out how to put them there only once + on keypress, not after.
-	 	}
-	});
-};
-
-
-function hangman(){ // adds hangman divs upon livesCounter countdown
-	if (livesCounter == 9){
-		document.getElementById("head").className ="addHead"
-	} else if (livesCounter == 8){
-		document.getElementById("body").className ="addBody"
-	} else if (livesCounter == 7){
-		document.getElementById("rArm").className ="addRArm"
-	} else if (livesCounter == 6){
-		document.getElementById("lArm").className ="addLArm"
-	} else if (livesCounter == 5){
-		document.getElementById("rLeg").className ="addRLeg"
-	} else if (livesCounter == 4){
-		document.getElementById("lLeg").className ="addLLeg"
-	} else if (livesCounter == 3){
-		document.getElementById("rHand").className ="addRHand"
-	} else if (livesCounter == 2){
-		document.getElementById("lHand").className ="addLHand"
-	} else if (livesCounter == 1){
-		document.getElementById("rFoot").className ="addRFoot"
-	} else if (livesCounter == 0){
-		document.getElementById("lFoot").className ="addLFoot"
-		document.getElementById("sadface").className ="addSFace"
-		lossCounter ++
-		setMessage("Game over :(")
-		//document.removeEventListener("keyup");
-	};
-};
-
-// function winGame(){
-// 	//if class show === split letters in the guessed array, display win message, winCounter ++
-// }
-
 
 function createBoard(){
 	
@@ -117,6 +62,67 @@ function addCell(letter, i){
  row[0].appendChild(newCell);
 }
 
+function playerGuess(){
+	$(document).on("keyup", function(event){
+		if(livesCounter > 0 ) {
+			var characterCode = event.which; // determine the character code the user pressed
+			var letterInput = String.fromCharCode(characterCode).toLowerCase(); // converting character code to string
+		 	if (guesses.indexOf(letterInput) === -1) { // if letterInput has already been guessed
+		 		for (var i = 0; i < wordChars.length; i++) {
+					if (letterInput === wordChars[i]){ // is the usr input included in the word?
+						$("#pos" + i).addClass("correct");//if correct letter is typed, it shows up in corresct place(s)
+					}
+				};
+				if (wordChars.indexOf(letterInput) === -1) { // if letter input is not inside wordChars
+					livesCounter--;	// decrement lives
+					setMessage("You have " + livesCounter + " lives left.")
+					hangman();
+				}
+				guesses.push(letterInput); // pushes guessed letters to div; need to figure out how to put them there only once + on keypress, not after.
+				setGuesses();
+				winGame();
+		 	}
+		}
+	});
+};
+
+
+function hangman(){ // adds hangman divs upon livesCounter countdown
+	if (livesCounter == 6){
+		document.getElementById("head").className ="addHead"
+	} else if (livesCounter == 5){
+		document.getElementById("body").className ="addBody"
+	} else if (livesCounter == 4){
+		document.getElementById("rArm").className ="addRArm"
+	} else if (livesCounter == 3){
+		document.getElementById("lArm").className ="addLArm"
+	} else if (livesCounter == 2){
+		document.getElementById("rLeg").className ="addRLeg"
+	} else if (livesCounter == 1){
+		document.getElementById("lLeg").className ="addLLeg"
+	} else if (livesCounter == 0){
+		document.getElementById("face").className ="addSFace"
+		//lossCounter ++
+		setMessage("Game over :(")
+		//document.removeEventListener("keyup");
+	};
+};
+
+function winGame(){
+	var checkWin = document.querySelector(".guessDiv2");
+	var corrects = document.getElementsByClassName("correct");
+	if(wordChars.length === corrects.length) {
+		livesCounter = 0;
+		setMessage("You won!");
+	}
+		// for (i = 0; i<= checkWin.length; i++){
+		// 	if (checkWin === wordChars){
+		// 		setMessage("You won!")
+		// 		won = true;
+		// 		//remove event listener
+		// 	}
+		// }
+};
 
 
  $("#myButton").on("click", function(){
@@ -124,16 +130,10 @@ function addCell(letter, i){
 });
 
 
-// 1. Position hangman divs correctly
 // 2. Add functionality to win game and set message
-// 3. Make lives count on page correctly
-// 3. Style page correctly:
-		// - colors
-		// - images
-		// - placement of divs / messages
 // Remove event listeners upon game win / lose
 // Make guessed letters appear immeadiately
-// Optional: add scoreboard w/ local storage
+// readme file
 
 
   
