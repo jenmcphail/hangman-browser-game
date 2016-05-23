@@ -23,7 +23,7 @@ td{
 }
 
 .messageDiv{
-	margin-top: -10px;
+	margin-top: 10px;
 	color: white;
 }
 
@@ -44,6 +44,7 @@ body{
 	background-image: url("hangmanimg.gif");
 	background-size: 400px;
 	background-repeat: no-repeat;
+	margin-top: 100px;
 	height: 400px;
 	padding: 25px;
 }
@@ -54,8 +55,9 @@ body{
 	background-size: 75px;
 	background-repeat: no-repeat;
 	height: 75px;
+	width: 100px;
 	margin-left: 210px;
-	margin-top: -15px;
+    margin-top: 47px;
 }
 
 .addBody{
@@ -63,6 +65,7 @@ body{
 	background-size: 10px;
 	background-repeat: no-repeat;
 	height: 150px;
+	width: 100px;
 	margin-left: 242px;
 }
 
@@ -71,6 +74,7 @@ body{
 	background-size: 50px;
 	background-repeat: no-repeat;
 	height: 150px;
+	width: 100px;
 	margin-left: 0px;
 	transform: 
 }
@@ -80,6 +84,7 @@ body{
 	background-size: 50px;
 	background-repeat: no-repeat;
 	height: 150px;
+	width: 100px;
 	margin-left: -40px;
 	margin-top: -150px;
 }
@@ -89,6 +94,7 @@ body{
 	background-size: 50px;
 	background-repeat: no-repeat;
 	height: 150px;
+	width: 100px;
 	margin-left: -48px;
     margin-top: -5px;
 }
@@ -98,6 +104,7 @@ body{
 	background-size: 50px;
 	background-repeat: no-repeat;
 	height: 150px;
+	width: 100px;
 	margin-left: 8px;
 	margin-top: -150px;
 }
@@ -106,6 +113,7 @@ body{
 	background-image: url("frowny-face.png");
 	background-size: 50px;
 	height: 75px;
+	width: 50px;
     background-repeat: no-repeat;
     margin-left: 10px;
 	
@@ -133,7 +141,6 @@ button {
 	color: white;
 	margin-left: 500px;
 	margin-top: 50px;
-	position: absolute;
 	text-align: center;
 
 }
