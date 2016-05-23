@@ -4,7 +4,7 @@ var words = ["tutorial", "glucose", "lament", "line", "frousier",
 "tourist", "vacant", "veneer", "disappoint", "glossary", 
 "friction", "illusion", "gibberish", "melancholy", "yawn", 
 "carnage", "spherical", "bustier", "granular", "extinguish", 
-"gallery", "herbivore", "buoy", "comical", "soldarity", 
+"gallery", "herbivore", "buoy", "comical", "solidarity", 
 "terrain", "sequin", "maritime", "primate", "erudite", 
 "calculator", "boiling", "renaissance", "light", "dissolve", 
 "squeegee", "dishwasher", "pumpkin", "polygon", "illuminate", 
@@ -26,8 +26,12 @@ var wordChars = randomIndex.split(""); //makes each selected word into an array 
 var guesses = []; //will push user input to this array
 var livesCounter = 7
 var won = false;
-//var winCounter = 0
-//var lossCounter = 0
+var winCounter = 0
+var lossCounter = 0
+var winScore;
+var loseScore;
+var storageWin = localStorage.setItem("winScore", winCounter);
+var strageLose = localStorage.setItem("loseScore", lossCounter);
 
 window.onload = initGame();
 
@@ -35,6 +39,8 @@ function initGame(){
 	createBoard();
 	playerGuess();
 	setMessage("You have " + livesCounter + " lives left.")
+	increaseScore();
+	decreaseScore();
 	console.log(wordChars);
 }
 
@@ -47,7 +53,6 @@ function setGuesses(){
 }
 
 function createBoard(){
-	
 	for (i = 0; i < wordChars.length; i++){
 		addCell(wordChars[i], i); // iterates through word and calls addCell function
 	};
@@ -77,17 +82,19 @@ function playerGuess(){
 					livesCounter--;	// decrement lives
 					setMessage("You have " + livesCounter + " lives left.")
 					hangman();
+					decreaseScore();
 				}
 				guesses.push(letterInput); // pushes guessed letters to div; need to figure out how to put them there only once + on keypress, not after.
 				setGuesses();
 				winGame();
+				increaseScore();
 		 	}
 		}
 	});
 };
 
 
-function hangman(){ // adds hangman divs upon livesCounter countdown
+function hangman(){ // adds hangman divs upon livesCounter countdown; determines of player has lost
 	if (livesCounter == 6){
 		document.getElementById("head").className ="addHead"
 	} else if (livesCounter == 5){
@@ -102,19 +109,52 @@ function hangman(){ // adds hangman divs upon livesCounter countdown
 		document.getElementById("lLeg").className ="addLLeg"
 	} else if (livesCounter == 0){
 		document.getElementById("face").className ="addSFace"
-		//lossCounter ++
 		setMessage("Game over :(")
+		lossCounter ++
 	};
 };
 
-function winGame(){
+function winGame(){ // compares guessed letters to letters in wordChars to determine if player has won
 	var checkWin = document.querySelector(".guessDiv2");
 	var corrects = document.getElementsByClassName("correct");
 	if(wordChars.length === corrects.length) {
 		livesCounter = 0;
 		setMessage("You won!");
+		winCounter ++
+	};
+};
+
+
+function increaseScore(){
+	document.getElementById("wins").textContent = winCounter + " win(s)"; // grabs wins div on scoreboard and sets the the win score based on winCounter
+	//update localStorage score if need to
+	if (winCounter >= localStorage.getItem('winScore')){
+		localStorage.setItem('winScore', winCounter);
 	}
 };
+
+function decreaseScore(){
+	document.getElementById("losses").textContent = lossCounter + " loss(es)"; // grabs losses div on scoreboard and sets the the loss score based on lossCounter
+	//update localStorage score if need to
+	if (lossCounter >= localStorage.getItem('loseScore')){
+	localStorage.setItem('loseScore', lossCounter);
+	}
+};
+
+
+function setWinScore(){
+	if (localStorage.getItem('winScore') === null){
+		localStorage.setItem('winScore', 0);
+	};
+};
+
+
+function setLossScore(){
+	if (localStorage.getItem('loseScore') === null){
+		localStorage.setItem('loseScore', 0);
+	};
+};
+
 
 
  $("#myButton").on("click", function(){
