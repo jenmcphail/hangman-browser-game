@@ -41,7 +41,7 @@ body{
 }
 
 #hangman{
-	background-image: url("hangmanimg.gif");
+	background-image: url("images/hangmanimg.gif");
 	background-size: 400px;
 	background-repeat: no-repeat;
 	margin-top: 100px;
@@ -51,7 +51,7 @@ body{
 
 
 .addHead{
-	background-image: url("circle.png");
+	background-image: url("images/circle.png");
 	background-size: 75px;
 	background-repeat: no-repeat;
 	height: 75px;
@@ -61,7 +61,7 @@ body{
 }
 
 .addBody{
-	background-image: url("body.png");
+	background-image: url("images/body.png");
 	background-size: 10px;
 	background-repeat: no-repeat;
 	height: 150px;
@@ -70,7 +70,7 @@ body{
 }
 
 .addRArm{
-	background-image: url("right-arm.png");
+	background-image: url("images/right-arm.png");
 	background-size: 50px;
 	background-repeat: no-repeat;
 	height: 150px;
@@ -80,7 +80,7 @@ body{
 }
 
 .addLArm{
-	background-image: url("left-arm.png");
+	background-image: url("images/left-arm.png");
 	background-size: 50px;
 	background-repeat: no-repeat;
 	height: 150px;
@@ -90,7 +90,7 @@ body{
 }
 
 .addRLeg{
-	background-image: url("right-leg.png");
+	background-image: url("images/right-leg.png");
 	background-size: 50px;
 	background-repeat: no-repeat;
 	height: 150px;
@@ -100,7 +100,7 @@ body{
 }
 
 .addLLeg{
-	background-image: url("left-leg.png");
+	background-image: url("images/left-leg.png");
 	background-size: 50px;
 	background-repeat: no-repeat;
 	height: 150px;
@@ -110,7 +110,7 @@ body{
 }
 
 .addSFace{
-	background-image: url("frowny-face.png");
+	background-image: url("images/frowny-face.png");
 	background-size: 50px;
 	height: 75px;
 	width: 50px;
