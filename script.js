@@ -93,7 +93,6 @@ function playerGuess(){
 	});
 };
 
-
 function hangman(){ // adds hangman divs upon livesCounter countdown; determines of player has lost
 	if (livesCounter == 6){
 		document.getElementById("head").className ="addHead"
@@ -124,7 +123,6 @@ function winGame(){ // compares guessed letters to letters in wordChars to deter
 	};
 };
 
-
 function increaseScore(){
 	document.getElementById("wins").textContent = winCounter + " win(s)"; // grabs wins div on scoreboard and sets the the win score based on winCounter
 	//update localStorage score if need to
@@ -141,21 +139,17 @@ function decreaseScore(){
 	}
 };
 
-
 function setWinScore(){
 	if (localStorage.getItem('winScore') === null){
 		localStorage.setItem('winScore', 0);
 	};
 };
 
-
 function setLossScore(){
 	if (localStorage.getItem('loseScore') === null){
 		localStorage.setItem('loseScore', 0);
 	};
 };
-
-
 
  $("#myButton").on("click", function(){
 	location.reload(); //resets game
