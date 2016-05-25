@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Hangman Browser Game</title>
+	<!-- Stylesheets $ Bootstrap CDN -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="style.css">
 
 
-<header><h1 align = "center">Hangman</h1></header>
-	
-<body>
+<header id = "gameTitle"><h1 align = "center">Hangman</h1></header>
+</head>
+
+<body class = "background">
+
 <div class = "container">
 	<div align = "center"><h3>Type a letter. Your word is:</h3></div>
 	<div align = "center">
@@ -22,7 +25,7 @@
 	<div class = "messageDiv" align = "center"></div>
 
 	<div align = "center">
-		<button id="myButton" type="button" class="btn btn-primary-outline">New Game</button>
+		<button id="resetButton" type="button" class="btn btn-primary-outline">New Game</button>
 	</div>
 
 	<div id = "hangman">
@@ -48,10 +51,10 @@
 	<div class = "guessDiv2"></div>
 </div>
 
-<script   src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
+<!-- .js file and JQuery CDN -->
+	<script   src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
+	<script type="text/javascript" src="script.js"></script>
 
-<script type="text/javascript" src="script.js"></script>
-
-</head>
 </body>
+
 </html>

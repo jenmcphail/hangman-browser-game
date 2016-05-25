@@ -151,7 +151,7 @@ function setLossScore(){
 	};
 };
 
- $("#myButton").on("click", function(){
+ $("#resetButton").on("click", function(){
 	location.reload(); //resets game
 });
 

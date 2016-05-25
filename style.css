@@ -2,21 +2,6 @@
 	padding: 20px;
 }
 
-td{
-	border: 2px solid white;
-	width: 20px;
-	padding: 20px;
-	color: rgba(0,0,0,0);
-	margin: 0 auto;
-	text-align: center;
-	padding: 5px;
-	column-width: 110px;
- 	-webkit-column-width: 110px;
- 	-moz-column-width: 110px;
- 	border-radius: 25px
-}
-
-
 .correct{
 	color: lightgray;
 	background-color: 
@@ -27,7 +12,7 @@ td{
 	color: white;
 }
 
-body{
+.background{
 	font-size: 20px;
 	background-color: #893cb4;
 }
@@ -123,14 +108,25 @@ body{
 .box{
 	width: 75px;
 	height: 75px;
+	border: 2px solid white;
+	/*width: 20px;
+	padding: 20px;*/
+	color: rgba(0,0,0,0);
+	margin: 0 auto;
+	text-align: center;
+	padding: 5px;
+	column-width: 110px;
+ 	-webkit-column-width: 110px;
+ 	-moz-column-width: 110px;
+ 	border-radius: 25px
 }
 
-header{
+#gameTitle{
 	color: white;
 	text-shadow: 2px 2px black
 }
 
-button {
+#resetButton {
 	margin-top: 10px;
 }
 
