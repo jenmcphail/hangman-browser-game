@@ -33,7 +33,9 @@ var loseScore;
 var storageWin = localStorage.setItem("winScore", winCounter);
 var strageLose = localStorage.setItem("loseScore", lossCounter);
 
-window.onload = initGame();
+$(document).ready(function(){
+	initGame();
+})
 
 function initGame(){
 	createBoard();
