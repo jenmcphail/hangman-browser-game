@@ -21,4 +21,4 @@ Hangman was built using:
 
 ###**Installation Instructions**
 
-* Source code can be found on [my github](https://github.com/jenmcphail/hangman-browser-game).
+* Clone down this repo and open index.html.
