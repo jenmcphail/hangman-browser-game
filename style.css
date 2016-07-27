@@ -19,9 +19,13 @@
 
 .guessDiv1{
 	color: white;
+	width: 400px;
+	display: inline-flex;
 }
 .guessDiv2{
 	height: 100px;
+	width: 400px;
+	display: inline-flex;
 	color: white;
 }
 
@@ -32,6 +36,7 @@
 	margin-top: 100px;
 	height: 400px;
 	padding: 25px;
+	width: 450px;
 }
 
 
@@ -105,7 +110,7 @@
 }
 
 
-.box{
+td {
 	width: 75px;
 	height: 75px;
 	border: 2px solid white;
@@ -133,9 +138,9 @@
 	width: 300px;
 	border: 2px solid white;
 	color: white;
-	margin-left: 500px;
-	margin-top: 50px;
 	text-align: center;
+	float: right;
+	clear: both;
 
 }
 

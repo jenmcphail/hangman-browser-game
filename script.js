@@ -1,10 +1,10 @@
 
-var words = ["tutorial", "glucose", "lament", "line", "frousier", 
+var words = ["tutorial", "glucose", "lament", "line", 
 "syncopation", "doubtful", "specious", "rumbler", "indefinitely", 
 "tourist", "vacant", "veneer", "disappoint", "glossary", 
 "friction", "illusion", "gibberish", "melancholy", "yawn", 
-"carnage", "spherical", "bustier", "granular", "extinguish", 
-"gallery", "herbivore", "buoy", "comical", "solidarity", 
+"carnage", "spherical", "granular", "extinguish", 
+"gallery", "herbivore", "buoy", "solidarity", 
 "terrain", "sequin", "maritime", "primate", "erudite", 
 "calculator", "boiling", "renaissance", "light", "dissolve", 
 "squeegee", "dishwasher", "pumpkin", "polygon", "illuminate", 
@@ -43,6 +43,7 @@ function initGame(){
 	setMessage("You have " + livesCounter + " lives left.")
 	increaseScore();
 	decreaseScore();
+	hangman();
 	console.log(wordChars);
 }
 
@@ -53,6 +54,18 @@ function setMessage(msg){
 function setGuesses(){
 	document.querySelector(".guessDiv2").textContent = guesses;
 }
+
+function setWinScore(){
+	if (localStorage.getItem('winScore') === null){
+		localStorage.setItem('winScore', 0);
+	};
+};
+
+function setLossScore(){
+	if (localStorage.getItem('loseScore') === null){
+		localStorage.setItem('loseScore', 0);
+	};
+};
 
 function createBoard(){
 	for (i = 0; i < wordChars.length; i++){
@@ -76,7 +89,7 @@ function playerGuess(){
 			var letterInput = String.fromCharCode(characterCode).toLowerCase(); // converting character code to string
 		 	if (guesses.indexOf(letterInput) === -1) { // if letterInput has already been guessed
 		 		for (var i = 0; i < wordChars.length; i++) {
-					if (letterInput === wordChars[i]){ // is the usr input included in the word?
+					if (letterInput === wordChars[i]){ // is the user input included in the word?
 						$("#pos" + i).addClass("correct");//if correct letter is typed, it shows up in corresct place(s)
 					}
 				};
@@ -86,7 +99,7 @@ function playerGuess(){
 					hangman();
 					decreaseScore();
 				}
-				guesses.push(letterInput); // pushes guessed letters to div; need to figure out how to put them there only once + on keypress, not after.
+				guesses.push(letterInput); // pushes guessed letters to div
 				setGuesses();
 				winGame();
 				increaseScore();
@@ -112,8 +125,10 @@ function hangman(){ // adds hangman divs upon livesCounter countdown; determines
 		document.getElementById("face").className ="addSFace"
 		setMessage("Game over :(")
 		lossCounter ++
+		localStorage.getItem('loseScore')
 	};
 };
+
 
 function winGame(){ // compares guessed letters to letters in wordChars to determine if player has won
 	var checkWin = document.querySelector(".guessDiv2");
@@ -122,6 +137,7 @@ function winGame(){ // compares guessed letters to letters in wordChars to deter
 		livesCounter = 0;
 		setMessage("You won!");
 		winCounter ++
+		localStorage.getItem('winScore')
 	};
 };
 
@@ -141,21 +157,10 @@ function decreaseScore(){
 	}
 };
 
-function setWinScore(){
-	if (localStorage.getItem('winScore') === null){
-		localStorage.setItem('winScore', 0);
-	};
+var reset = document.getElementById('resetButton')
+reset.onclick = function(){
+	location.reload();
 };
-
-function setLossScore(){
-	if (localStorage.getItem('loseScore') === null){
-		localStorage.setItem('loseScore', 0);
-	};
-};
-
- $("#resetButton").on("click", function(){
-	location.reload(); //resets game
-});
 
 
   
